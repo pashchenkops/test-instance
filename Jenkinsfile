@@ -9,8 +9,15 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				sh 'mvn package'
+				sh 'mvn package -Dmaven.test.skip'
+				archiveArtifacts artifacts '**/target/*.jar'
 			}
+		}
+
+		stage('Test') {
+		    steps {
+		        sh 'mvn-test'
+		    }
 		}
 	}
 
