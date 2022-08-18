@@ -24,10 +24,10 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'AppServerCred', variable: 'KEYS')]) {
                     echo 'copying...'
-                    sh 'scp -o StrictHostKeyChecking=no -i $KEYS target/*.jar ec2-user@ec2-34-224-41-53.compute-1.amazonaws.com:~'
+                    sh 'scp -o StrictHostKeyChecking=no -i $KEYS target/*.jar ec2-user@ec2-54-227-112-114.compute-1.amazonaws.com:~'
 
                     echo 'running...'
-                    sh 'ssh -o StrictHostKeyChecking=no -i $KEYS ec2-user@ec2-34-224-41-53.compute-1.amazonaws.com \'bash -s\' < startup.sh'
+                    sh 'ssh -o StrictHostKeyChecking=no -i $KEYS ec2-user@ec2-54-227-112-114.compute-1.amazonaws.com \'bash -s\' < startup.sh'
 
                 }
             }
